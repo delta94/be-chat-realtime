@@ -6,8 +6,7 @@ const server = http.createServer(app)
 const io = socketio(server)
 const moment = require("moment")
 
-const {addUser, removeUser, getUserInRoom, getAllUsersInRoom} = require("./helper/user")
-
+const {addUser, removeUser, getUserInRoom, getAllUsersInRoom} = require("./helper/user");
 const admin = {nameTrim:"Admin"}
 
 io.on("connection", (socket)=>{
@@ -42,7 +41,7 @@ io.on("connection", (socket)=>{
     })
 })
 
-const PORT = 4000
+const PORT = process.env.PORT || 4000
 
 app.use("/", function(req, res){
     res.send("Server is running....")
