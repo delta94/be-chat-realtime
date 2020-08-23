@@ -33,7 +33,7 @@ io.on("connection", (socket)=>{
         
     })
     socket.on('disconnect',()=>{
-        const {user, err} = removeUser(socket.id);
+        const {user} = removeUser(socket.id);
         if(user){
             io.to(user.roomTrim).emit("mes",  {user:admin, text: `User ${user.nameTrim} leave room`});
             io.to(user.roomTrim).emit("dataRoom", getAllUsersInRoom(user.roomTrim))
